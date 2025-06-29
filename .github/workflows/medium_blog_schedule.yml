@@ -58,12 +58,12 @@ jobs:
                 <h2 style="color:#28a745;">✅ Medium Blog Pipeline Succeeded</h2>
                 <p>Your scheduled <strong>GitHub Action</strong> completed successfully.</p>
                 <ul>
-                  <li><b>Repository:</b> ${REPO}</li>
-                  <li><b>Branch:</b> ${BRANCH}</li>
-                  <li><b>Commit:</b> ${COMMIT}</li>
+                  <li><b>Repository:</b> <a href="${{ github.server_url }}/${{ github.repository }}">"{{ github.repository }}"</a></li>
+                  <li><b>Branch:</b> "{{ github.ref_name }}"</li>
+                  <li><b>Commit:</b> "{{ github.sha }}"</li>
                 </ul>
                 <p>
-                  <a href="${SERVER_URL}/${REPO}/actions/runs/${RUN_ID}"
+                  <a href="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
                      style="display:inline-block; padding:10px 15px; background:#0078d4; color:#fff; text-decoration:none; border-radius:5px;">
                     🔍 View Logs on GitHub
                   </a>
@@ -92,12 +92,12 @@ jobs:
                 <h2 style="color:#d93025;">❌ Medium Blog Pipeline Failed</h2>
                 <p>Your <strong>GitHub Action</strong> failed to complete.</p>
                 <ul>
-                  <li><b>Repository:</b> ${REPO}</li>
-                  <li><b>Branch:</b> ${BRANCH}</li>
-                  <li><b>Commit:</b> ${COMMIT}</li>
+                  <li><b>Repository:</b> <a href="${{ github.server_url }}/${{ github.repository }}">"{{ github.repository }}"</a></li>
+                  <li><b>Branch:</b> "{{ github.ref_name }}"</li>
+                  <li><b>Commit:</b> "{{ github.sha }}"</li>
                 </ul>
                 <p>
-                  <a href="${SERVER_URL}/${REPO}/actions/runs/${RUN_ID}"
+                  <a href="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
                      style="display:inline-block; padding:10px 15px; background:#d93025; color:#fff; text-decoration:none; border-radius:5px;">
                     ⚠️ View Failure Logs
                   </a>
