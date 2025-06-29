@@ -13,15 +13,12 @@ SNOWFLAKE_CONFIG = {
     "schema": "DEV"
 }
 
-# 🧠 Cortex Parameters for Enrichment
+# ❄️ Cortex Parameters for Enrichment
 CORTEX_PARAMS = {
     "model": "mistral-large2",
-    "prompt": (
-        "Summarize the content after ':-', it was blog content. "
-        "Our motive is to summarize the whole content so that the reader gets quick insight "
-        "on the blog. Make sure the summarized content should be within 150 words:-"
-    ),
+    "prompt": "Summarize the content after ':-', it was blog content. Our motive is to summarize the whole content so that the reader gets quick insight on the blog. Make sure the summarized content should be within 150 words:-",
     "summarize_credit": 0.10 / 1000000,
+    #Complete_Credit will differ based on model - Refer "https://www.snowflake.com/legal-files/CreditConsumptionTable.pdf"
     "complete_credit": 1.95 / 1000000
 }
 
