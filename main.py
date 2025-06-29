@@ -39,7 +39,7 @@ def main():
 
     data = []
     for url in blog_urls:
-        time.sleep(1)  # Avoid hammering the site
+        time.sleep(1) 
         title, content, full_url, image_url = fetch_title_content(url, scraper_session)
         data.append({
             "TITLE": title,
@@ -57,7 +57,7 @@ def main():
 
     df_all = pd.DataFrame(data)
 
-    # 🧊 Connect to Snowflake
+    # ❄️ Connect to Snowflake
     session = Session.builder.configs(SNOWFLAKE_CONFIG).create()
     create_table(session)
 
@@ -74,7 +74,7 @@ def main():
 
     # 📢 Notify Google Chat with fresh blogs
     recent_blogs = get_last_day_blogs(session)
-    print(f"📬 Sending {len(recent_blogs)} blog summaries to Google Chat...")
+    print(f"📬 Sending {len(recent_blogs)} blog summaries to Google Space...")
 
     for _, row in recent_blogs.iterrows():
         send_blog_card_to_google_chat(
