@@ -45,27 +45,33 @@ jobs:
           password: ${{ secrets.SMTP_PASSWORD }}
           subject: ✅ Medium Blog Pipeline Succeeded
           to: aslam.kader@tigeranalytics.com
-          from: ${{ secrets.SMTP_USERNAME }}
+          from: "ETL Bot <${{ secrets.SMTP_USERNAME }}}"
           content_type: text/html
           body: |
-            <div style="font-family:Segoe UI, sans-serif; color:#333;">
-              <h2 style="color:#28a745;">✅ Medium Blog Pipeline Succeeded</h2>
-              <p>Your scheduled <strong>GitHub Action</strong> completed successfully.</p>
-              <ul>
-                <li><b>Repository:</b> <a href="${{ github.server_url }}/${{ github.repository }}">{{ github.repository }}</a></li>
-                <li><b>Branch:</b> {{ github.ref_name }}</li>
-                <li><b>Commit:</b> {{ github.sha }}</li>
-              </ul>
-              <p>
-                <a href="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" 
-                   style="display:inline-block; padding:10px 15px; background:#0078d4; color:#fff; text-decoration:none; border-radius:5px;">
-                  🔍 View Logs on GitHub
-                </a>
-              </p>
-              <p>📎 Logs are available as an artifact: <strong>medium-etl-run-log</strong></p>
-              <hr style="margin:20px 0;">
-              <p style="font-size:13px; color:#666;">Sent automatically by your ETL bot 🤖</p>
-            </div>
+            <html>
+              <head>
+                <meta charset="UTF-8">
+                <title>✅ Medium Blog Pipeline Succeeded</title>
+              </head>
+              <body style="font-family:Segoe UI, sans-serif; color:#333;">
+                <h2 style="color:#28a745;">✅ Medium Blog Pipeline Succeeded</h2>
+                <p>Your scheduled <strong>GitHub Action</strong> completed successfully.</p>
+                <ul>
+                  <li><b>Repository:</b> <a href="${{ github.server_url }}/${{ github.repository }}">{{ github.repository }}</a></li>
+                  <li><b>Branch:</b> {{ github.ref_name }}</li>
+                  <li><b>Commit:</b> {{ github.sha }}</li>
+                </ul>
+                <p>
+                  <a href="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                     style="display:inline-block; padding:10px 15px; background:#0078d4; color:#fff; text-decoration:none; border-radius:5px;">
+                    🔍 View Logs on GitHub
+                  </a>
+                </p>
+                <p>📎 Logs are available as an artifact: <strong>medium-etl-run-log</strong></p>
+                <hr style="margin:20px 0;">
+                <p style="font-size:13px; color:#666;">Sent automatically by ETL bot 🤖</p>
+              </body>
+            </html>
 
       - name: Send failure email
         if: failure()
@@ -77,24 +83,30 @@ jobs:
           password: ${{ secrets.SMTP_PASSWORD }}
           subject: ❌ Medium Blog Pipeline Failed
           to: aslam.kader@tigeranalytics.com
-          from: ${{ secrets.SMTP_USERNAME }}
+          from: "ETL Bot <${{ secrets.SMTP_USERNAME }}}"
           content_type: text/html
           body: |
-            <div style="font-family:Segoe UI, sans-serif; color:#333;">
-              <h2 style="color:#d93025;">❌ Medium Blog Pipeline Failed</h2>
-              <p>Your <strong>GitHub Action</strong> failed to complete.</p>
-              <ul>
-                <li><b>Repository:</b> <a href="${{ github.server_url }}/${{ github.repository }}">{{ github.repository }}</a></li>
-                <li><b>Branch:</b> {{ github.ref_name }}</li>
-                <li><b>Commit:</b> {{ github.sha }}</li>
-              </ul>
-              <p>
-                <a href="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" 
-                   style="display:inline-block; padding:10px 15px; background:#d93025; color:#fff; text-decoration:none; border-radius:5px;">
-                  ⚠️ View Failure Logs
-                </a>
-              </p>
-              <p>📎 Logs have been uploaded as an artifact: <strong>medium-etl-run-log</strong></p>
-              <hr style="margin:20px 0;">
-              <p style="font-size:13px; color:#666;">Sent automatically by your ETL bot 🤖</p>
-            </div>
+            <html>
+              <head>
+                <meta charset="UTF-8">
+                <title>❌ Medium Blog Pipeline Failed</title>
+              </head>
+              <body style="font-family:Segoe UI, sans-serif; color:#333;">
+                <h2 style="color:#d93025;">❌ Medium Blog Pipeline Failed</h2>
+                <p>Your <strong>GitHub Action</strong> failed to complete.</p>
+                <ul>
+                  <li><b>Repository:</b> <a href="${{ github.server_url }}/${{ github.repository }}">{{ github.repository }}</a></li>
+                  <li><b>Branch:</b> {{ github.ref_name }}</li>
+                  <li><b>Commit:</b> {{ github.sha }}</li>
+                </ul>
+                <p>
+                  <a href="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                     style="display:inline-block; padding:10px 15px; background:#d93025; color:#fff; text-decoration:none; border-radius:5px;">
+                    ⚠️ View Failure Logs
+                  </a>
+                </p>
+                <p>📎 Log artifact: <strong>medium-etl-run-log</strong></p>
+                <hr style="margin:20px 0;">
+                <p style="font-size:13px; color:#666;">Sent automatically by  ETL bot 🤖</p>
+              </body>
+            </html>
