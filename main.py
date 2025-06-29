@@ -84,6 +84,7 @@ def main():
             image_url=row["IMAGE_URL"],
             webhook_url=GOOGLE_CHAT_WEBHOOK
         )
+        time.sleep(5)
 
     session.close()
     print("✅ ETL pipeline complete.")
