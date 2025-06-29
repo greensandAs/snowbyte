@@ -44,7 +44,7 @@ jobs:
           username: ${{ secrets.SMTP_USERNAME }}
           password: ${{ secrets.SMTP_PASSWORD }}
           subject: ✅ Medium Blog Pipeline Succeeded
-          to: recipient1@example.com,recipient2@example.com
+          to: aslam.kader@tigeranalytics.com
           from: ${{ secrets.SMTP_USERNAME }}
           content_type: text/html
           body: |
@@ -76,7 +76,7 @@ jobs:
           username: ${{ secrets.SMTP_USERNAME }}
           password: ${{ secrets.SMTP_PASSWORD }}
           subject: ❌ Medium Blog Pipeline Failed
-          to: recipient1@example.com,recipient2@example.com
+          to: aslam.kader@tigeranalytics.com
           from: ${{ secrets.SMTP_USERNAME }}
           content_type: text/html
           body: |
