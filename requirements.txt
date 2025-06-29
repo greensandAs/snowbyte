@@ -1,23 +1,15 @@
 # Web requests and parsing
-requests
-beautifulsoup4
-html5lib
+requests==2.32.3
+beautifulsoup4==4.13.0
+html5lib==1.1
 
 # Data manipulation
-pandas
+pandas==2.2.2
 
 # Unicode normalization and timezone handling
-unicodedata2
-tzdata
+unicodedata2==15.1.0
+tzdata==2024.1
 
 # Snowflake connectivity
-snowflake-snowpark-python
-
-# Logging & helpers (standard library, but included for clarity)
-# logging
-
-# Optional: For safety, pin versions
-# requests==2.31.0
-# beautifulsoup4==4.12.3
-# pandas==2.2.2
-# snowflake-snowpark-python==1.13.0
+# Version 1.15.0 or newer is compatible with Pandas 2.x
+snowflake-snowpark-python==1.15.0
