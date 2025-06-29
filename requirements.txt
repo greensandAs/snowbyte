@@ -12,4 +12,4 @@ tzdata==2024.1
 
 # Snowflake connectivity
 # Version 1.15.0 or newer is compatible with Pandas 2.x
-snowflake-snowpark-python==1.15.0
+snowflake-snowpark-python[pandas]
