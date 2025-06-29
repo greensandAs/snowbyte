@@ -46,8 +46,7 @@ jobs:
           subject: ✅ Medium Blog Pipeline Succeeded
           to: aslam.kader@tigeranalytics.com
           from: "ETL Bot <${{ secrets.SMTP_USERNAME }}}"
-          content_type: text/html
-          body: |
+          html_body: 
             <html>
               <head>
                 <meta charset="UTF-8">
@@ -84,8 +83,7 @@ jobs:
           subject: ❌ Medium Blog Pipeline Failed
           to: aslam.kader@tigeranalytics.com
           from: "ETL Bot <${{ secrets.SMTP_USERNAME }}}"
-          content_type: text/html
-          body: |
+          html_body: 
             <html>
               <head>
                 <meta charset="UTF-8">
