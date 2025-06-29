@@ -8,6 +8,12 @@ on:
 jobs:
   run-script:
     runs-on: ubuntu-latest
+    env:
+      REPO: ${{ github.repository }}
+      BRANCH: ${{ github.ref_name }}
+      COMMIT: ${{ github.sha }}
+      SERVER_URL: ${{ github.server_url }}
+      RUN_ID: ${{ github.run_id }}
 
     steps:
       - name: Checkout source
@@ -45,30 +51,27 @@ jobs:
           password: ${{ secrets.SMTP_PASSWORD }}
           subject: ✅ Medium Blog Pipeline Succeeded
           to: aslam.kader@tigeranalytics.com
-          from: "ETL Bot <${{ secrets.SMTP_USERNAME }}}"
+          from: "ETL Bot"
           html_body: |
             <html>
-              <head>
-                <meta charset="UTF-8">
-                <title>✅ Medium Blog Pipeline Succeeded</title>
-              </head>
               <body style="font-family:Segoe UI, sans-serif; color:#333;">
                 <h2 style="color:#28a745;">✅ Medium Blog Pipeline Succeeded</h2>
                 <p>Your scheduled <strong>GitHub Action</strong> completed successfully.</p>
                 <ul>
-                  <li><b>Repository:</b> <a href="${{ github.server_url }}/${{ github.repository }}">{{ github.repository }}</a></li>
-                  <li><b>Branch:</b> {{ github.ref_name }}</li>
-                  <li><b>Commit:</b> {{ github.sha }}</li>
+                  <li><b>Repository:</b> ${REPO}</li>
+                  <li><b>Branch:</b> ${BRANCH}</li>
+                  <li><b>Commit:</b> ${COMMIT}</li>
                 </ul>
                 <p>
-                  <a href="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                  <a href="${SERVER_URL}/${REPO}/actions/runs/${RUN_ID}"
                      style="display:inline-block; padding:10px 15px; background:#0078d4; color:#fff; text-decoration:none; border-radius:5px;">
                     🔍 View Logs on GitHub
                   </a>
                 </p>
                 <p>📎 Logs are available as an artifact: <strong>medium-etl-run-log</strong></p>
+                <p style="font-size:13px; color:#666;">📩 This is an automated message. Please do not reply to this email.</p>
                 <hr style="margin:20px 0;">
-                <p style="font-size:13px; color:#666;">Sent automatically by ETL bot 🤖</p>
+                <p style="font-size:13px; color:#666;">Sent  by ETL bot 🤖</p>
               </body>
             </html>
 
@@ -82,29 +85,26 @@ jobs:
           password: ${{ secrets.SMTP_PASSWORD }}
           subject: ❌ Medium Blog Pipeline Failed
           to: aslam.kader@tigeranalytics.com
-          from: "ETL Bot <${{ secrets.SMTP_USERNAME }}}"
+          from: "ETL Bot"
           html_body: |
             <html>
-              <head>
-                <meta charset="UTF-8">
-                <title>❌ Medium Blog Pipeline Failed</title>
-              </head>
               <body style="font-family:Segoe UI, sans-serif; color:#333;">
                 <h2 style="color:#d93025;">❌ Medium Blog Pipeline Failed</h2>
                 <p>Your <strong>GitHub Action</strong> failed to complete.</p>
                 <ul>
-                  <li><b>Repository:</b> <a href="${{ github.server_url }}/${{ github.repository }}">{{ github.repository }}</a></li>
-                  <li><b>Branch:</b> {{ github.ref_name }}</li>
-                  <li><b>Commit:</b> {{ github.sha }}</li>
+                  <li><b>Repository:</b> ${REPO}</li>
+                  <li><b>Branch:</b> ${BRANCH}</li>
+                  <li><b>Commit:</b> ${COMMIT}</li>
                 </ul>
                 <p>
-                  <a href="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                  <a href="${SERVER_URL}/${REPO}/actions/runs/${RUN_ID}"
                      style="display:inline-block; padding:10px 15px; background:#d93025; color:#fff; text-decoration:none; border-radius:5px;">
                     ⚠️ View Failure Logs
                   </a>
                 </p>
                 <p>📎 Log artifact: <strong>medium-etl-run-log</strong></p>
+                <p style="font-size:13px; color:#666;">📩 This is an automated message. Please do not reply to this email.</p>
                 <hr style="margin:20px 0;">
-                <p style="font-size:13px; color:#666;">Sent automatically by  ETL bot 🤖</p>
+                <p style="font-size:13px; color:#666;">Sent by ETL bot 🤖</p>
               </body>
             </html>
