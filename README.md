@@ -2,9 +2,9 @@
 
 ![Python Version](https://img.shields.io/badge/python-3.10-blue.svg?style=for-the-badge&logo=python)
 ![Snowflake Cortex](https://img.shields.io/badge/Snowflake%20Cortex-29B5E8?style=for-the-badge&logo=snowflake&logoColor=white)
-![GitHub Actions](https://img.shields.io/github/actions/workflow/status/[YOUR_USERNAME]/[YOUR_REPO_NAME]/medium_blog_schedule.yml?style=for-the-badge&logo=githubactions&logoColor=white)
+![GitHub Actions](https://img.shields.io/github/actions/workflow/status/greensandAs/snowbyte/medium_blog_schedule.yml?style=for-the-badge&logo=githubactions&logoColor=white)
 
-This project is a fully automated ETL/ELT pipeline that scrapes articles from the official Snowflake Medium blog, enriches them with AI-generated summaries using **Snowflake Cortex**, stores the results in a Snowflake database, and sends notifications to both Google Chat and an operator via email.
+This project is a fully automated ELT pipeline that scrapes Snowflake articles from the official Medium Website, enriches them with AI-generated summaries using **Snowflake Cortex**, stores the results in a Snowflake database, and sends notifications to both Google Chat and an operator via email.
 
 ---
 
@@ -116,8 +116,6 @@ Once these secrets are set, the workflow in `.github/workflows/medium_blog_sched
 .
 ├── .github/workflows/
 │ └── medium_blog_schedule.yml # GitHub Actions workflow for daily execution and monitoring
-├── assets/
-│ └── workflow-diagram.png # Diagram of the pipeline workflow
 ├── config/
 │ └── settings.py # Static configuration for Snowflake, Cortex, and fallbacks
 ├── notifier/
